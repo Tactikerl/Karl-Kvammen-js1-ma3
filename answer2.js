@@ -5,13 +5,16 @@ const gameContainer = document.querySelector(".gamesList");
 
 async function callRawgApi() {
   const response = await fetch(url);
+
   const gamesList = await response.json();
+
   const resultList = gamesList.results;
+
   document.querySelector(".loader").classList.remove("loader");
-  console.log(gamesList);
 
   for (let i = 0; i < 8; i++) {
     gameContainer.innerHTML += `<li>Name: ${resultList[i].name}  Rating: ${resultList[i].rating}   Tags: ${resultList[i].tags.length}</li>`;
   }
 }
+
 callRawgApi();
